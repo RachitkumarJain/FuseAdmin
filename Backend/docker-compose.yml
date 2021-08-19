@@ -1,0 +1,21 @@
+version: '3.3'
+
+services:
+    backend:
+        build: .
+        ports: 
+            - 8000:3000
+        volumes: 
+            - .:/app
+        depends_on:
+            - db
+    
+    db:
+        image: mysql:8.0.24
+        restart: always
+        environment: 
+            MYSQL_DATABASE: admin_db
+            MYSQL_PASSWORD: R@chit1307
+            MYSQL_ROOT_PASSWORD: R@chit1307
+        volumes: 
+            - .dbdata:/var/lib/mysql
